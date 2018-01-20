@@ -29,9 +29,35 @@ X = [ones(m, 1) X];
 %       are in rows, then, you can use max(A, [], 2) to obtain the max 
 %       for each row.
 %       
+%{
+>> a = [1 2 3; 2 3 6; 5 5 5; 55 3 33]
+a =
 
+    1    2    3
+    2    3    6
+    5    5    5
+   55    3   33
 
+>> max(a)
+ans =
 
+   55    5   33
+
+>> max(a, [], 1)
+ans =
+
+   55    5   33
+
+>> max(a, [], 2)
+ans =
+
+    3
+    6
+    5
+   55
+%}
+
+%value, index. since index directly maps to what class it is, only need that. Value is something between 0-1 representing probability
 [~, p] = max(sigmoid(X * all_theta'), [], 2);
 
 
