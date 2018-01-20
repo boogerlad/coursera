@@ -40,7 +40,10 @@ grad = zeros(size(theta));
 
 
 
-
+J = sum(((y - 1) .* log(1 - sigmoid(X * theta)) - y .* log(sigmoid(X * theta)))) / m + lambda / (2 * m) * sum(theta(2:end, :).^2);
+grad = (X' * (sigmoid(X * theta) - y) + lambda .* theta) / m;
+%grad(1, 1) -= (lambda .* theta(1, 1) / m); %subtract just from gradient 0
+grad(1, 1) = X(:, 1)' * (sigmoid(X * theta) - y) / m; %other alternative is compute first one from scratch
 
 
 
